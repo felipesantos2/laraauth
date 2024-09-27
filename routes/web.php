@@ -9,6 +9,8 @@ Route::get('/', function () {
 });
 
 Route::get('/login',[LoginController::class, 'index']);
+// Route::get('/login',[LoginController::class, 'create']);
+// Route::get('/login',[LoginController::class, 'store']);
 // Route::get('/',[LoginController::class, 'index']);
 
 
