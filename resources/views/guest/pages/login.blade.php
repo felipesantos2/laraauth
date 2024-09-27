@@ -18,37 +18,55 @@
                     E-mail e senha meu camarada.
                 </p>
 
-                <form class="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" action="{{ route('login.authenticate') }}" method="POST">
+                <form class="mt-8 mb-2 w-80 max-w-screen-lg sm:w-96" action="{{ route('login.store') }}" method="POST">
+
+                    @csrf
+
                     <div class="mb-1 flex flex-col gap-6">
                         <div class="w-full max-w-sm min-w-[200px]">
                             <label class="block mb-2 text-sm text-slate-600">
                                 Nome Completo
                             </label>
-                            <input type="text"
+                            <input type="text" name="name"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                placeholder="Seu Nome" />
+                                placeholder="Seu Nome" value="{{ old('name') }}" />
+                            <div>
+                                @error('name')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="w-full max-w-sm min-w-[200px]">
                             <label class="block mb-2 text-sm text-slate-600">
                                 Email
                             </label>
-                            <input type="email"
+                            <input type="email" name="email"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                placeholder="Seu Email" />
+                                placeholder="Seu Email" value="{{ old('email') }}" />
+                            <div>
+                                @error('email')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                         <div class="w-full max-w-sm min-w-[200px]">
                             <label class="block mb-2 text-sm text-slate-600">
                                 Senha
                             </label>
-                            <input type="password"
+                            <input type="password" name="password"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
                                 placeholder="Sua Senha" />
+                                <div>
+                                    @error('password')
+                                        <div class="alert alert-danger">{{ $message }}</div>
+                                    @enderror
+                                </div>
                         </div>
                     </div>
 
                     <button
                         class="mt-4 w-full rounded-md bg-slate-800 py-2 px-4 border border-transparent text-center text-sm text-white transition-all shadow-md hover:shadow-lg focus:bg-slate-700 focus:shadow-none active:bg-slate-700 hover:bg-slate-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 disabled:shadow-none"
-                        type="button">
+                        type="submit">
                         Acessar
                     </button>
 
@@ -58,6 +76,7 @@
                             Bora criar!
                         </a>
                     </p>
+
                 </form>
 
             </div>
