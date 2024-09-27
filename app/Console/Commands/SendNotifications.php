@@ -3,6 +3,7 @@
 namespace App\Console\Commands;
 
 use App\Models\User;
+use App\Notifications\EmailNotification;
 use Illuminate\Console\Command;
 
 class SendNotifications extends Command
@@ -26,6 +27,6 @@ class SendNotifications extends Command
      */
     public function handle()
     {
-        User::all()->each(fn(User $user) => $user->notify());
+        User::all()->each(fn(User $user) => $user->notify(new EmailNotification() ));
     }
 }
