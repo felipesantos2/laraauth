@@ -10,6 +10,10 @@
 
             <div class="relative flex flex-col rounded-xl bg-transparent shadow-lg p-8 border">
 
+
+                <x-danger-alert />
+
+
                 <h4 class="block text-xl font-medium text-slate-800">
                     Bora fazer login!
                 </h4>
@@ -23,13 +27,13 @@
                     @csrf
 
                     <div class="mb-1 flex flex-col gap-6">
-                        <div class="w-full max-w-sm min-w-[200px]">
+                        <div class="w-full max-w-sm min-w-[200px] hidden">
                             <label class="block mb-2 text-sm text-slate-600">
                                 Nome Completo
                             </label>
-                            <input type="text" name="name"
+                            <input type="text" name="name" autocomplete="name" aria-autocomplete="inline"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                placeholder="Seu Nome" value="{{ old('name') }}" />
+                                placeholder="Seu Nome" value="Felipe Pinheiro" />
                             <div>
                                 @error('name')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -40,9 +44,9 @@
                             <label class="block mb-2 text-sm text-slate-600">
                                 Email
                             </label>
-                            <input type="email" name="email"
+                            <input type="email" name="email" autocomplete="email"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                placeholder="Seu Email" value="{{ old('email') }}" />
+                                placeholder="Seu Email" value="santospinheiro627@gmail.com" />
                             <div>
                                 @error('email')
                                     <div class="alert alert-danger">{{ $message }}</div>
@@ -55,12 +59,12 @@
                             </label>
                             <input type="password" name="password"
                                 class="w-full bg-transparent placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-md px-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300 shadow-sm focus:shadow"
-                                placeholder="Sua Senha" />
-                                <div>
-                                    @error('password')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                placeholder="Sua Senha" value="123456789" />
+                            <div>
+                                @error('password')
+                                    <div class="alert alert-danger">{{ $message }}</div>
+                                @enderror
+                            </div>
                         </div>
                     </div>
 

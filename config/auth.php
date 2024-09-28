@@ -40,6 +40,14 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        // 'admins' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Admin::class,
+        // ],
+        // 'writers' => [
+        //     'driver' => 'eloquent',
+        //     'model' => App\Writer::class,
+        // ],
     ],
 
     /*

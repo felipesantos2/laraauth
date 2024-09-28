@@ -5,7 +5,9 @@ namespace App\Http\Controllers\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Contracts\View\View;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Redirect;
 
 class LoginController extends Controller
 {
@@ -15,32 +17,48 @@ class LoginController extends Controller
     }
 
     // https://www.w3docs.com/snippets/php/laravel-get-parameters-from-http-request.html
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
 
         $validated = $request->validate([
-            'name' => 'required',
+            // 'name' => 'required',
             'email' => 'required',
             'password' => 'required',
         ]);
 
         if (!$validated) {
-            return;
+            return Redirect::route('login.create')
+                ->with('status', 'Errooooooooooooooooooooooo!');
+        }
+
+        $autheticated = Auth::guard('web')->attempt($validated);
+
+        if (!$autheticated) {
+            return Redirect::route('login.create')
+                ->with('status', 'Errooooooooooooooooooooooo!');
         }
 
         // create logged session
         $request->session()->regenerate();
-
         $request->session()->put('logged', 'true');
 
-
-        dd($request->session());
-
-        // $this->authenticate();
+        // success
+        return Redirect::route('home')
+            ->with('status', 'Autenticato com Sucesso!');
     }
 
-    private function authenticate()
+    public function destroy(Request $request): RedirectResponse
     {
-        session();
+        Auth::logout();
+
+        $request->session()->put('logged', 'false');
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        // dd($request->session());
+
+        return Redirect::route('home');
     }
 }
