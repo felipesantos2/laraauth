@@ -5,7 +5,7 @@ use App\Http\Controllers\Auth\LoginController;
 
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('guest.pages.welcome');
 })->name('home');
 
 Route::get('/login', [LoginController::class, 'create'])
