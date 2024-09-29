@@ -10,4 +10,14 @@
         </h1>
     </div>
 
+    {{ html()->form('PUT', '/post')->open() }}
+
+    {{ html()->email('email')->placeholder('Your e-mail address') }}
+
+    {{html()->div()->text('hello World')->class('text-2xl text-red-500 uppercase') }}
+
+    {{html()->span()->text('hello World')->class('text-2xl text-red-500 uppercase') }}
+
+    {{ html()->form()->close() }}
+
 @endsection
