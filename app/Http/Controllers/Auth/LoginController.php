@@ -19,7 +19,7 @@ class LoginController extends Controller
     // https://www.w3docs.com/snippets/php/laravel-get-parameters-from-http-request.html
     public function store(Request $request): RedirectResponse
     {
-
+        
         $validated = $request->validate([
             // 'name' => 'required',
             'email' => 'required',
@@ -31,9 +31,9 @@ class LoginController extends Controller
                 ->with('status', 'Errooooooooooooooooooooooo!');
         }
 
-        $autheticated = Auth::guard('web')->attempt($validated);
+        $authenticated = Auth::guard('web')->attempt($validated);
 
-        if (!$autheticated) {
+        if (!$authenticated) {
             return Redirect::route('login.create')
                 ->with('status', 'Errooooooooooooooooooooooo!');
         }
@@ -43,7 +43,7 @@ class LoginController extends Controller
         $request->session()->put('logged', 'true');
 
         // success
-        return Redirect::route('home')
+        return Redirect::route('dashboard')
             ->with('status', 'Autenticato com Sucesso!');
     }
 

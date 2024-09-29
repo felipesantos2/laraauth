@@ -19,7 +19,7 @@ Route::post('/logout', [LoginController::class, 'destroy'])
 
 Route::get('/dashboard', function () {
     return view('admin.pages.dashboard');
-})->name('dashbord');
+})->name('dashboard');
 
 
 // Route::get('/login',[LoginController::class, 'store']);

@@ -10,9 +10,7 @@
 
             <div class="relative flex flex-col rounded-xl bg-transparent shadow-lg p-8 border">
 
-
                 <x-danger-alert />
-
 
                 <h4 class="block text-xl font-medium text-slate-800">
                     Bora fazer login!
@@ -36,7 +34,7 @@
                                 placeholder="Seu Nome" value="Felipe Pinheiro" />
                             <div>
                                 @error('name')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="text-red-500 font-semibold">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -49,7 +47,7 @@
                                 placeholder="Seu Email" value="santospinheiro627@gmail.com" />
                             <div>
                                 @error('email')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="text-red-500 font-semibold">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
@@ -62,7 +60,7 @@
                                 placeholder="Sua Senha" value="123456789" />
                             <div>
                                 @error('password')
-                                    <div class="alert alert-danger">{{ $message }}</div>
+                                    <div class="text-red-500 font-semibold">{{ $message }}</div>
                                 @enderror
                             </div>
                         </div>
